@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.ExcelUserMapper">
+
+    <!--<resultMap type="com.example.demo.pojo.ExcelUser" id="UserDaoResult">
+        <id     property="id"   column="id"   />
+        <result property="name"   column="name"   />
+        <result property="pwd"  column="pwd"  />
+        <result property="userIntroduce"  column="user_introduce"  />
+    </resultMap>-->
+
+    <!--查询所有-->
+    <select id="getAll" resultType="com.example.demo.pojo.ExcelUser">
+        SELECT
+        *
+        FROM
+        excel_user
+    </select>
+
+    <!--批量插入-->
+    <insert id="insertAll" parameterType="java.util.List">
+        insert into excel_user (dept_id, loginName, phone, password, status) values
+        <foreach collection="list" item="excelUserDto" index="index" separator=",">
+            (#{excelUserDto.deptId}, #{excelUserDto.loginname},
+            #{excelUserDto.phone}, #{excelUserDto.password}, #{excelUserDto.status})
+        </foreach>
+    </insert>
+    <insert id="insert">
+        insert into excel_user(dept_id,loginName) values (#{deptId},#{loginName})
+    </insert>
+
+
+</mapper>
