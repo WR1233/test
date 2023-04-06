@@ -18,6 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class ExcelController {
 
+    public static void main(String[] args) {
+        System.out.println("git测试代码提交");
+    }
+
     @Autowired
     private ExcelService excelService;
 
@@ -57,3 +61,4 @@ public class ExcelController {
         return excelService.insert(user);
     }
 }
+
